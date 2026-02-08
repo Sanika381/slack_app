@@ -2,8 +2,7 @@ name: Daily Slack Message
 
 on:
   schedule:
-    - cron: '55 14 * * *'
-  
+    - cron: '55 14 * * *'  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -18,15 +17,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  
+          node-version: '18'
       
       - name: Install dependencies
         run: npm install
       
-      
       - name: Run Slack message script
-        run: node index.mjs  
+        run: node index.mjs
         env:
-          SLACK_TOKEN: ${{ secrets. SLACK_TOKEN }}
-          SLACK_SIGNINGSECRET: ${{ secrets. SLACK_SIGNINGSECRET }}
-          CHANNEL:${{secrets.CHANNEL }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SLACK_SIGNINGSECRET: ${{ secrets.SLACK_SIGNINGSECRET }}
+          CHANNEL: ${{ secrets.CHANNEL }}
