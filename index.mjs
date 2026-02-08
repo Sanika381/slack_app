@@ -15,9 +15,6 @@ await app.client.chat.postMessage({
 }
 
 
-cron.schedule('30 10 * * 1-6',()=>{
-    slackCron()
-console.log("message sent Successfully!");
-})
+slackCron()
 
 
