@@ -1,9 +1,8 @@
-name: Daily Slack Message
+name: Daily Slack Message (Scheduled)
 
 on:
   schedule:
     - cron: '*/5 * * * *'
-  workflow_dispatch:
 
 jobs:
   send-slack-message:
