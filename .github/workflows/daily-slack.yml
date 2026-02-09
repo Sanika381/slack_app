@@ -1,0 +1,23 @@
+name: Daily Slack Message
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  send-slack-message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - run: npm install
+      - run: node index.mjs
+        env:
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+          SLACK_SIGNINGSECRET: ${{ secrets.SLACK_SIGNINGSECRET }}
+          CHANNEL: ${{ secrets.CHANNEL }}
